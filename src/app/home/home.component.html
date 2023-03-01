@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <button type="button" class="btn btn-primary mb-3" (click)="limpiar()">Limpiar</button>
+  <form [formGroup]="form">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        Tipo de vehiculo
+      </div>
+      <div class="col">
+        <select class="form-select" aria-label="Default select example" formControlName="tipoVehiculo">
+          <option value="carros">Carro</option>
+          <option value="motos">Moto</option>
+          <option value="caminhoes">Camión</option>
+        </select>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="seleccionarTipo()">Seleccionar</button>
+      </div>
+    </div>
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        Marca
+      </div>
+      <div class="col">
+        <select class="form-select" aria-label="Default select example" formControlName="marca" >
+          <option *ngFor="let marcas of marcasList" value="{{marcas.codigo}}">{{marcas.nome}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="seleccionarMarca()">Seleccionar</button>
+      </div>
+    </div>
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        Modelo
+      </div>
+      <div class="col">
+        <select class="form-select" aria-label="Default select example" formControlName="modelo">
+          <option *ngFor="let models of modelosList" value="{{models.codigo}}">{{models.nome}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="seleccionarModelo()">Seleccionar</button>
+      </div>
+    </div>
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        Año
+      </div>
+      <div class="col">
+        <select class="form-select" aria-label="Default select example" formControlName="anio">
+          <option *ngFor="let years of aniosList" value="{{years.codigo}}">{{years.nome}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="seleccionarAnio()">Seleccionar</button>
+      </div>
+    </div>
+  </form>
+  <div class="card" style="width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title">Detalles del vehículo</h5>
+      <p class="card-text"><b>Marca: </b>{{infoTotal.Marca}}</p>
+      <p class="card-text"><b>Modelo: </b>{{infoTotal.Modelo}}</p>
+      <p class="card-text"><b>Año: </b>{{infoTotal.AnoModelo}}</p>
+      <p class="card-text"><b>Combustible: </b>{{infoTotal.Combustivel}}</p>
+      <div class="row align-items-center mb-3">
+        <div class="col">
+          <p class="card-text"><b>Valor: </b>{{infoTotal.Valor}}</p>
+        </div>
+        <div class="col">
+          <div class="col">
+            <button type="button" class="btn btn-warning" (click)="convertirAPesosCol()">Convertir a pesos</button>
+          </div>
+        </div>
+      </div>
+      <p class="card-text" *ngIf="valorCOP"><b>Valor: </b>COP {{valorCOP| number}}</p>
+      <p class="card-text" *ngIf="valorCOP"><b>Impuesto {{valorImpuestoPorc}}%: </b>COP {{valorImpuesto| number}}</p>
+    </div>
+  </div>
+</div>
